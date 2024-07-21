@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>counter</title>
+    <link rel="stylesheet" href="counter.css" />
+  </head>
+  <body>
+    <section class="container">
+      <div class="box">
+        <h1 class="title">Counter</h1>
+        <div class="main-part">
+          <span class="minus" onclick="subtract()">-</span>
+          <p class="num"></p>
+          <span class="plus" onclick="addition()">+</span>
+        </div>
+        <button onclick="reset()">Reset</button>
+      </div>
+    </section>
+    <script src="jquery-3.7.1.js"></script>
+    <script>
+      let number = document.querySelector(".num"),
+        realNum = parseInt(localStorage.getItem("data"));
+      number.innerHTML = realNum;
+      function subtract() {
+        realNum -= 1;
+        number.innerHTML = realNum;
+        savedata();
+      }
+      function addition() {
+        realNum += 1;
+        number.innerHTML = realNum;
+        savedata();
+      }
+      function reset() {
+        number.innerHTML = 0;
+        realNum = 0;
+        savedata();
+      }
+      function savedata() {
+        localStorage.setItem("data", number.innerHTML);
+      }
+    </script>
+  </body>
+</html>
